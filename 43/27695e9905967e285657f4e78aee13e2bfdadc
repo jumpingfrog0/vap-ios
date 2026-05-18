@@ -1,0 +1,13 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "4327695e9905967e285657f4e78aee13e2bfdadc",
+  "prompts": {},
+  "logical_commit_id": "4327695e9905967e285657f4e78aee13e2bfdadc",
+  "humans": {
+    "h_0dcab3a63f5195": {
+      "author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}
