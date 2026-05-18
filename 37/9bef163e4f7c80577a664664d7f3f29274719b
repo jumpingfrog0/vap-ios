@@ -1,0 +1,27 @@
+QGVAPlayer.podspec
+  h_0dcab3a63f5195 7
+  s_7e1d59e1183080::t_2457fbe8b8f152 9
+  s_7e1d59e1183080::t_57efae23db4adb 1-6,8,10-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "379bef163e4f7c80577a664664d7f3f29274719b",
+  "prompts": {},
+  "logical_commit_id": "379bef163e4f7c80577a664664d7f3f29274719b",
+  "humans": {
+    "h_0dcab3a63f5195": {
+      "author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  },
+  "sessions": {
+    "s_7e1d59e1183080": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e3b0b-0be8-7f73-969c-b6725e6b7c44",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}
