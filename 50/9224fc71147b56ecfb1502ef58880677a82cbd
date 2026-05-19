@@ -1,0 +1,28 @@
+Classes/QGVAPlayer/Views/Metal/QGHWDMetalView.m
+  s_2f2ff5aff6015e::t_8797ac299041b7 20
+Classes/QGVAPlayer/Views/Metal/QGHWDMetalRenderer.h
+  s_2f2ff5aff6015e::t_8797ac299041b7 29
+Classes/QGVAPlayer/Views/Metal/QGHWDMetalRenderer.m
+  s_2f2ff5aff6015e::t_8797ac299041b7 100,176
+Classes/QGVAPlayer/UIView+VAP.m
+  s_2f2ff5aff6015e::t_8797ac299041b7 18,362
+Classes/QGVAPlayer/Controllers/Decoders/QGMP4FrameHWDecoder.m
+  s_2f2ff5aff6015e::t_53c3e7214aa82b 25,32-34,44,197-201,225-229,241-245,251,255,274,284-288,300,346-349,352-356,486-497,501-525
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "509224fc71147b56ecfb1502ef58880677a82cbd",
+  "prompts": {},
+  "logical_commit_id": "509224fc71147b56ecfb1502ef58880677a82cbd",
+  "sessions": {
+    "s_2f2ff5aff6015e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e3b90-ef7c-7f73-9914-2704bb5a35f0",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}
