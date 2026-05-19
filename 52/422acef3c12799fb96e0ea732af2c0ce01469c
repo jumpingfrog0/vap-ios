@@ -1,0 +1,25 @@
+Classes/QGVAPlayer/Utils/QGVAPMetalShaderFunctionLoader.m
+  s_b0f3bd8139b2d9::t_1057dc87e3e560 61,74-89
+README.md
+  s_b0f3bd8139b2d9::t_1f13ff83084981 34-35,37,39
+  s_b0f3bd8139b2d9::t_b88733efd487aa 36,38
+QGVAPlayer.podspec
+  s_b0f3bd8139b2d9::t_1057dc87e3e560 12,14-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "52422acef3c12799fb96e0ea732af2c0ce01469c",
+  "prompts": {},
+  "logical_commit_id": "52422acef3c12799fb96e0ea732af2c0ce01469c",
+  "sessions": {
+    "s_b0f3bd8139b2d9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e3f19-e1f9-7992-b525-67a51d80447f",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}
