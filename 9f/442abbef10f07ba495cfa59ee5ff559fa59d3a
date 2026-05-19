@@ -1,0 +1,26 @@
+Classes/QGVAPlayer/Models/QGVAPTextureLoader.m
+  s_2f2ff5aff6015e::t_58684032ef6809 24
+Classes/QGVAPlayer/Views/Metal/Vapx/QGVAPMetalRenderer.m
+  s_2f2ff5aff6015e::t_58684032ef6809 25,374
+Classes/QGVAPlayer/Views/Metal/Vapx/QGVAPMetalView.m
+  s_2f2ff5aff6015e::t_58684032ef6809 20
+Classes/QGVAPlayer/Views/Metal/Vapx/QGVAPMetalRenderer.h
+  s_2f2ff5aff6015e::t_58684032ef6809 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "9f442abbef10f07ba495cfa59ee5ff559fa59d3a",
+  "prompts": {},
+  "logical_commit_id": "9f442abbef10f07ba495cfa59ee5ff559fa59d3a",
+  "sessions": {
+    "s_2f2ff5aff6015e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e3b90-ef7c-7f73-9914-2704bb5a35f0",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}
