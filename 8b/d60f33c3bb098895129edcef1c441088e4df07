@@ -1,0 +1,61 @@
+Example/QGVAPDemo/QGVAPDemo/Info.plist
+  s_885432076ba481::t_c91b49bdd657d5 1-56
+Example/QGVAPDemo/Podfile
+  s_885432076ba481::t_c91b49bdd657d5 1-8
+  s_885432076ba481::t_b426d909e842d6 9-16
+Example/QGVAPDemo/QGVAPDemo/LaunchScreen.storyboard
+  s_885432076ba481::t_b739f491550fab 1-30
+Example/QGVAPDemo/QGVAPDemo/main.m
+  s_885432076ba481::t_c91b49bdd657d5 1-10
+Example/QGVAPDemo/QGVAPDemo.xcworkspace/contents.xcworkspacedata
+  s_885432076ba481::t_fcfa1203591b92 1-10
+Example/QGVAPDemo/QGVAPDemo/VAP/JFVapResourceDownloader.m
+  s_885432076ba481::t_0a4728c99a7668 1-91
+Example/QGVAPDemo/QGVAPDemo.xcodeproj/project.pbxproj
+  s_885432076ba481::t_6b41a1e919f151 1-17,19-24,26-28,30,32-50,52-71,73-75,86-105,107-141,143-145,147-200,246-323,325-346,348-455
+  s_885432076ba481::t_fcfa1203591b92 18,25,29,31,51,72,76-85,106,142,146,201-245,324,347
+Example/QGVAPDemo/QGVAPDemo/VAP/JFVapResourceDownloader.h
+  s_885432076ba481::t_0a4728c99a7668 1-21
+Example/QGVAPDemo/QGVAPDemo/SceneDelegate.m
+  s_885432076ba481::t_66ec77f6607ee0 6
+  s_885432076ba481::t_c91b49bdd657d5 1-5,7-20
+.gitignore
+  s_885432076ba481::t_33d55cb939c42a 28
+  s_885432076ba481::t_5e19131395cba9 27,48-49
+  s_885432076ba481::t_9b982b1afeb03b 1-26,29-47
+Example/QGVAPDemo/QGVAPDemo/VAP/JFVapImageCacheHelper.h
+  s_885432076ba481::t_0a4728c99a7668 1-20
+Example/QGVAPDemo/QGVAPDemo/VAP/JFVapImageCacheHelper.m
+  s_885432076ba481::t_0a4728c99a7668 1-80
+Example/QGVAPDemo/QGVAPDemo/VAP/JFVapDebugConfig.h
+  s_885432076ba481::t_c7b201945bd366 1-41
+Example/QGVAPDemo/QGVAPDemo/VAP/FamVapTestController.h
+  s_885432076ba481::t_c91b49bdd657d5 8
+  s_885432076ba481::t_b426d909e842d6 12
+Example/QGVAPDemo/QGVAPDemo/VAP/JFVapDebugConfig.m
+  s_885432076ba481::t_c7b201945bd366 1-104
+Example/QGVAPDemo/QGVAPDemo/AppDelegate.m
+  s_885432076ba481::t_c91b49bdd657d5 1-2,4-29
+  s_885432076ba481::t_ff9896d49e1b93 3
+Example/QGVAPDemo/QGVAPDemo/SceneDelegate.h
+  s_885432076ba481::t_c91b49bdd657d5 1-11
+Example/QGVAPDemo/QGVAPDemo/AppDelegate.h
+  s_885432076ba481::t_c91b49bdd657d5 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "8bd60f33c3bb098895129edcef1c441088e4df07",
+  "prompts": {},
+  "logical_commit_id": "8bd60f33c3bb098895129edcef1c441088e4df07",
+  "sessions": {
+    "s_885432076ba481": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e49ea-942f-7a12-90a8-6519323f6dfd",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}
