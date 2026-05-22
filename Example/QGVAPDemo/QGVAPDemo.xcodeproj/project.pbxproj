@@ -1,0 +1,455 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		075BA002479539DCC4FBB95B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F4A397E43FA2CE665726B /* Foundation.framework */; };
+		1260659F3CA620A1E04AB463 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F196394F669554898173D /* SceneDelegate.m */; };
+		42AADED848A283DB412F39A6 /* JFVapResourceDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C4282C512BEC1B069D9F3ECB /* JFVapResourceDownloader.m */; };
+		52DB4A357695B85EDE6E71AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F465D145AECE26B193CFDD1 /* main.m */; };
+		6D26017CAEBBA2BB50AB82EA /* FamVapTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = C143A141BBCE3D1879E59E35 /* FamVapTestController.m */; };
+		76B1FCF0BE4567D468D8E84D /* JFVapDebugConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EA60651FD2E2DAEE7363AEA7 /* JFVapDebugConfig.m */; };
+		C2BC7EDB506189683E91C581 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A353FCD500E87A12827549 /* AppDelegate.m */; };
+		CB15BF34B277A7C3D020A1BE /* JFVapImageCacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C452D3B3ADAA47B53AF89D /* JFVapImageCacheHelper.m */; };
+		D9646B17C9942061231C74EA /* Pods_QGVAPDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76FF82BB965CBE78B47227E9 /* Pods_QGVAPDemo.framework */; };
+		EAF67C766BF1680D93DC1D08 /* LaunchScreen.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 8B2037CC5DD860B37F4A2F28 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		22BB13D7654D88540D82E121 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2355B49CD47B9F67D6690725 /* JFVapDebugConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JFVapDebugConfig.h; sourceTree = "<group>"; };
+		24C3F3D1590E32FCAAC66209 /* Pods-QGVAPDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QGVAPDemo.debug.xcconfig"; path = "Target Support Files/Pods-QGVAPDemo/Pods-QGVAPDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		3C8F196394F669554898173D /* SceneDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		42DCFCBF42B912E386F6D5DE /* JFVapResourceDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JFVapResourceDownloader.h; sourceTree = "<group>"; };
+		48158874DBAEDB12E37B0DAE /* FamVapTestController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FamVapTestController.h; sourceTree = "<group>"; };
+		5AF9567015B6E460B822A66C /* Pods-QGVAPDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QGVAPDemo.release.xcconfig"; path = "Target Support Files/Pods-QGVAPDemo/Pods-QGVAPDemo.release.xcconfig"; sourceTree = "<group>"; };
+		60C452D3B3ADAA47B53AF89D /* JFVapImageCacheHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JFVapImageCacheHelper.m; sourceTree = "<group>"; };
+		76FF82BB965CBE78B47227E9 /* Pods_QGVAPDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QGVAPDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F465D145AECE26B193CFDD1 /* main.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8B2037CC5DD860B37F4A2F28 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		904F4A397E43FA2CE665726B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		98A8CAAE15381C64C86124A6 /* SceneDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		9DD59A73C751BD9A25E45666 /* JFVapImageCacheHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JFVapImageCacheHelper.h; sourceTree = "<group>"; };
+		B57FA3AFF2C4E3CD0AFE8302 /* AppDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C143A141BBCE3D1879E59E35 /* FamVapTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FamVapTestController.m; sourceTree = "<group>"; };
+		C4282C512BEC1B069D9F3ECB /* JFVapResourceDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JFVapResourceDownloader.m; sourceTree = "<group>"; };
+		DA8198A5BAAC8FB8785D95ED /* QGVAPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QGVAPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA60651FD2E2DAEE7363AEA7 /* JFVapDebugConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JFVapDebugConfig.m; sourceTree = "<group>"; };
+		F6A353FCD500E87A12827549 /* AppDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E596F939EF4608405270386 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				075BA002479539DCC4FBB95B /* Foundation.framework in Frameworks */,
+				D9646B17C9942061231C74EA /* Pods_QGVAPDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09F1DEB4B90753A9C650A16F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA8198A5BAAC8FB8785D95ED /* QGVAPDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		170D9520ABEA7CDB5C33121B = {
+			isa = PBXGroup;
+			children = (
+				09F1DEB4B90753A9C650A16F /* Products */,
+				3F3C7C4A52928568A539A95B /* Frameworks */,
+				2A30AC175310FBD7126B2CA7 /* QGVAPDemo */,
+				1A91DEAB8838D122EA4F79CF /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		1A91DEAB8838D122EA4F79CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5AF9567015B6E460B822A66C /* Pods-QGVAPDemo.release.xcconfig */,
+				24C3F3D1590E32FCAAC66209 /* Pods-QGVAPDemo.debug.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2A30AC175310FBD7126B2CA7 /* QGVAPDemo */ = {
+			isa = PBXGroup;
+			children = (
+				DD4C9F9D7B328F4AF3EAD801 /* VAP */,
+				7F465D145AECE26B193CFDD1 /* main.m */,
+				F6A353FCD500E87A12827549 /* AppDelegate.m */,
+				3C8F196394F669554898173D /* SceneDelegate.m */,
+				B57FA3AFF2C4E3CD0AFE8302 /* AppDelegate.h */,
+				98A8CAAE15381C64C86124A6 /* SceneDelegate.h */,
+				22BB13D7654D88540D82E121 /* Info.plist */,
+				8B2037CC5DD860B37F4A2F28 /* LaunchScreen.storyboard */,
+			);
+			name = QGVAPDemo;
+			path = QGVAPDemo;
+			sourceTree = "<group>";
+		};
+		3F3C7C4A52928568A539A95B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5EB682B4CF9F8186E0AFB139 /* iOS */,
+				76FF82BB965CBE78B47227E9 /* Pods_QGVAPDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5EB682B4CF9F8186E0AFB139 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				904F4A397E43FA2CE665726B /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		DD4C9F9D7B328F4AF3EAD801 /* VAP */ = {
+			isa = PBXGroup;
+			children = (
+				C143A141BBCE3D1879E59E35 /* FamVapTestController.m */,
+				EA60651FD2E2DAEE7363AEA7 /* JFVapDebugConfig.m */,
+				60C452D3B3ADAA47B53AF89D /* JFVapImageCacheHelper.m */,
+				C4282C512BEC1B069D9F3ECB /* JFVapResourceDownloader.m */,
+				48158874DBAEDB12E37B0DAE /* FamVapTestController.h */,
+				2355B49CD47B9F67D6690725 /* JFVapDebugConfig.h */,
+				9DD59A73C751BD9A25E45666 /* JFVapImageCacheHelper.h */,
+				42DCFCBF42B912E386F6D5DE /* JFVapResourceDownloader.h */,
+			);
+			name = VAP;
+			path = VAP;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BBA8A46D8C2DE4B6F1E33891 /* QGVAPDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF4AA8C301BCFD80DEAA5C17 /* Build configuration list for PBXNativeTarget "QGVAPDemo" */;
+			buildPhases = (
+				DEC1887BC75A6B0504BDE329 /* [CP] Check Pods Manifest.lock */,
+				2FEC76E54A32B96EEAAA82E8 /* Sources */,
+				0E596F939EF4608405270386 /* Frameworks */,
+				7113F399D284EF3038F66FF1 /* Resources */,
+				5608559017A45415BCA64947 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QGVAPDemo;
+			productName = QGVAPDemo;
+			productReference = DA8198A5BAAC8FB8785D95ED /* QGVAPDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		179FEEE8FDDD11D075216142 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					BBA8A46D8C2DE4B6F1E33891 = {
+						CreatedOnToolsVersion = 26.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F728D79A123046C78EC10CE6 /* Build configuration list for PBXProject "QGVAPDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 170D9520ABEA7CDB5C33121B;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 09F1DEB4B90753A9C650A16F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBA8A46D8C2DE4B6F1E33891 /* QGVAPDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7113F399D284EF3038F66FF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5608559017A45415BCA64947 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QGVAPDemo/Pods-QGVAPDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/QGVAPlayer/QGVAPlayer.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QGVAPlayer.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QGVAPDemo/Pods-QGVAPDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEC1887BC75A6B0504BDE329 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QGVAPDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FEC76E54A32B96EEAAA82E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52DB4A357695B85EDE6E71AB /* main.m in Sources */,
+				C2BC7EDB506189683E91C581 /* AppDelegate.m in Sources */,
+				1260659F3CA620A1E04AB463 /* SceneDelegate.m in Sources */,
+				EAF67C766BF1680D93DC1D08 /* LaunchScreen.storyboard in Sources */,
+				6D26017CAEBBA2BB50AB82EA /* FamVapTestController.m in Sources */,
+				76B1FCF0BE4567D468D8E84D /* JFVapDebugConfig.m in Sources */,
+				CB15BF34B277A7C3D020A1BE /* JFVapImageCacheHelper.m in Sources */,
+				42AADED848A283DB412F39A6 /* JFVapResourceDownloader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		12B7936D04C1980370812589 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2F341F0713D390CE1EAD40DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24C3F3D1590E32FCAAC66209 /* Pods-QGVAPDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = QGVAPDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joyy.qgvapdemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		92BBAEE7E1607677B826D240 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AF9567015B6E460B822A66C /* Pods-QGVAPDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = QGVAPDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joyy.qgvapdemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C2B1CC9BD1829C12DF6527B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F728D79A123046C78EC10CE6 /* Build configuration list for PBXProject "QGVAPDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2B1CC9BD1829C12DF6527B6 /* Debug */,
+				12B7936D04C1980370812589 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF4AA8C301BCFD80DEAA5C17 /* Build configuration list for PBXNativeTarget "QGVAPDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92BBAEE7E1607677B826D240 /* Release */,
+				2F341F0713D390CE1EAD40DA /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 179FEEE8FDDD11D075216142 /* Project object */;
+}
