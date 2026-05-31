@@ -450,24 +450,25 @@ NSString *const QGMP4HWDErrorDomain = @"QGMP4HWDErrorDomain";
             }
         } else if (_mp4Parser.videoCodecID == QGMP4VideoStreamCodecIDH265) {
             if (@available(iOS 11.0, *)) {
-                if(VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC)) {
-                    const uint8_t* const parameterSetPointers[3] = {(const uint8_t*)[self.vpsData bytes], (const uint8_t*)[self.spsData bytes], (const uint8_t*)[self.ppsData bytes]};
-                    const size_t parameterSetSizes[3] = {[self.vpsData length], [self.spsData length], [self.ppsData length]};
-                    
-                    _status = CMVideoFormatDescriptionCreateFromHEVCParameterSets(kCFAllocatorDefault,
-                                                                                  3,                    // parameter_set_count
-                                                                                  parameterSetPointers, // &parameter_set_pointers
-                                                                                  parameterSetSizes,    // &parameter_set_sizes
-                                                                                  4,                    // nal_unit_header_length
-                                                                                  NULL,
-                                                                                  &_mFormatDescription);
-                    if (_status != noErr) {
-                        VAP_Event(kQGVAPModuleCommon, @"CMVideoFormatDescription. Creation: %@.", (_status == noErr) ? @"successfully." : @"failed.");
-                        _constructErr = [NSError errorWithDomain:QGMP4HWDErrorDomain code:QGMP4HWDErrorCode_ErrorCreateVTBDesc userInfo:[self errorUserInfo]];
-                        return NO;
-                    }
-                } else {
-                    VAP_Event(kQGVAPModuleCommon, @"H.265 decoding is un-supported because of the hardware");
+#if !TARGET_OS_SIMULATOR
+                if (!VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC)) {
+                    VAP_Event(kQGVAPModuleCommon, @"H.265 hardware decoding is un-supported on this device");
+                    return NO;
+                }
+#endif
+                const uint8_t* const parameterSetPointers[3] = {(const uint8_t*)[self.vpsData bytes], (const uint8_t*)[self.spsData bytes], (const uint8_t*)[self.ppsData bytes]};
+                const size_t parameterSetSizes[3] = {[self.vpsData length], [self.spsData length], [self.ppsData length]};
+                
+                _status = CMVideoFormatDescriptionCreateFromHEVCParameterSets(kCFAllocatorDefault,
+                                                                              3,                    // parameter_set_count
+                                                                              parameterSetPointers, // &parameter_set_pointers
+                                                                              parameterSetSizes,    // &parameter_set_sizes
+                                                                              4,                    // nal_unit_header_length
+                                                                              NULL,
+                                                                              &_mFormatDescription);
+                if (_status != noErr) {
+                    VAP_Event(kQGVAPModuleCommon, @"CMVideoFormatDescription. Creation: %@.", (_status == noErr) ? @"successfully." : @"failed.");
+                    _constructErr = [NSError errorWithDomain:QGMP4HWDErrorDomain code:QGMP4HWDErrorCode_ErrorCreateVTBDesc userInfo:[self errorUserInfo]];
                     return NO;
                 }
             } else {

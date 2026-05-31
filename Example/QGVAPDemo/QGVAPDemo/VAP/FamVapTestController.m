@@ -91,6 +91,9 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
     [self addTestItem:@"Bigo vap 资源" clickCallback:^{
         [weakSelf playBigoVapResource];
     }];
+    [self addTestItem:@"Famo 座驾 资源" clickCallback:^{
+        [weakSelf playFamoVehicleResource];
+    }];
     [self addTestItem:@"famo 资源" clickCallback:^{
         [weakSelf playFamoResource];
     }];
@@ -333,6 +336,14 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
     }];
 }
 
+- (void)playFamoVehicleResource
+{
+    [self download:@"https://o-sg.famoapp.com/universal/bb4b9390-f64e-4957-df12-0ccee8e3e802.mp4" callback:^(NSString *filePath) {
+        self.isBigoVap = YES;
+        [self playVap:filePath contentMode:QGVAPWrapViewContentModeAspectFit];
+    }];
+}
+
 - (void)playFamoResource
 {
     [self download:@"https://o-sg.famoapp.com/turnover/3101831a-21a9-4288-ed96-9471e65be0c3.mp4" callback:^(NSString *filePath) {
@@ -567,7 +578,8 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
     if (self.isBigoVap) {
         NSDictionary *extraInfo = @{
             @"p_img": kJFVapDemoAvatarURL,
-            @"p_text": @"文字1"
+            @"p_text": @"文字1",
+            @"p_txt": @"文字1"
         };
         return extraInfo[tag] ?: @"";
     }

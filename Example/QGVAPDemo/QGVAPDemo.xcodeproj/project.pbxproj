@@ -79,7 +79,6 @@
 				5AF9567015B6E460B822A66C /* Pods-QGVAPDemo.release.xcconfig */,
 				24C3F3D1590E32FCAAC66209 /* Pods-QGVAPDemo.debug.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -95,7 +94,6 @@
 				22BB13D7654D88540D82E121 /* Info.plist */,
 				8B2037CC5DD860B37F4A2F28 /* LaunchScreen.storyboard */,
 			);
-			name = QGVAPDemo;
 			path = QGVAPDemo;
 			sourceTree = "<group>";
 		};
@@ -119,16 +117,15 @@
 		DD4C9F9D7B328F4AF3EAD801 /* VAP */ = {
 			isa = PBXGroup;
 			children = (
-				C143A141BBCE3D1879E59E35 /* FamVapTestController.m */,
-				EA60651FD2E2DAEE7363AEA7 /* JFVapDebugConfig.m */,
-				60C452D3B3ADAA47B53AF89D /* JFVapImageCacheHelper.m */,
-				C4282C512BEC1B069D9F3ECB /* JFVapResourceDownloader.m */,
 				48158874DBAEDB12E37B0DAE /* FamVapTestController.h */,
+				C143A141BBCE3D1879E59E35 /* FamVapTestController.m */,
 				2355B49CD47B9F67D6690725 /* JFVapDebugConfig.h */,
+				EA60651FD2E2DAEE7363AEA7 /* JFVapDebugConfig.m */,
 				9DD59A73C751BD9A25E45666 /* JFVapImageCacheHelper.h */,
+				60C452D3B3ADAA47B53AF89D /* JFVapImageCacheHelper.m */,
 				42DCFCBF42B912E386F6D5DE /* JFVapResourceDownloader.h */,
+				C4282C512BEC1B069D9F3ECB /* JFVapResourceDownloader.m */,
 			);
-			name = VAP;
 			path = VAP;
 			sourceTree = "<group>";
 		};
@@ -178,8 +175,6 @@
 				Base,
 			);
 			mainGroup = 170D9520ABEA7CDB5C33121B;
-			minimizedProjectReferenceProxies = 0;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 09F1DEB4B90753A9C650A16F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -312,8 +307,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
