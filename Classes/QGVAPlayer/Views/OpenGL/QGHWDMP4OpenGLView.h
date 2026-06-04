@@ -18,9 +18,11 @@
 #import <OpenGLES/ES2/glext.h>
 #import "UIView+VAP.h"
 
+@class QGVAPCommonInfo;
+
 @protocol QGHWDMP4OpenGLViewDelegate <NSObject>
 
-- (void)onViewUnavailableStatus;
+- (void)qgvap_renderViewDidBecomeUnavailable;
 
 @end
 
@@ -28,14 +30,7 @@
 
 @property (nonatomic, strong) EAGLContext *glContext;
 @property (nonatomic, weak) id<QGHWDMP4OpenGLViewDelegate> displayDelegate;
-@property (nonatomic, assign) QGHWDTextureBlendMode blendMode;
-@property (nonatomic, assign) BOOL pause;
 
-- (void)setupGL;
-- (void)displayPixelBuffer:(CVPixelBufferRef)pixelBuffer;
 - (void)dispose;
-
-//update glcontext's viewport size by layer bounds
-- (void)updateBackingSize;
 
 @end

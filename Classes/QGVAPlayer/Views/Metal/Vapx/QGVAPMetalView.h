@@ -20,17 +20,13 @@
 
 @protocol QGVAPMetalViewDelegate <NSObject>
 
-- (void)onMetalViewUnavailable;
+- (void)qgvap_renderViewDidBecomeUnavailable;
 
 @end
 
 @interface QGVAPMetalView : UIView
 
 @property (nonatomic, weak) id<QGVAPMetalViewDelegate> delegate;
-@property (nonatomic, strong) QGVAPCommonInfo *commonInfo;
-@property (nonatomic, strong) QGVAPMaskInfo *maskInfo;
-
-- (void)display:(CVPixelBufferRef)pixelBuffer mergeInfos:(NSArray<QGVAPMergedInfo *> *)infos;
 
 - (void)dispose;
 

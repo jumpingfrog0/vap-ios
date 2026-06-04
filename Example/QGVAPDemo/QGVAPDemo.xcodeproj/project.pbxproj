@@ -117,14 +117,14 @@
 		DD4C9F9D7B328F4AF3EAD801 /* VAP */ = {
 			isa = PBXGroup;
 			children = (
-				48158874DBAEDB12E37B0DAE /* FamVapTestController.h */,
-				C143A141BBCE3D1879E59E35 /* FamVapTestController.m */,
 				2355B49CD47B9F67D6690725 /* JFVapDebugConfig.h */,
 				EA60651FD2E2DAEE7363AEA7 /* JFVapDebugConfig.m */,
 				9DD59A73C751BD9A25E45666 /* JFVapImageCacheHelper.h */,
 				60C452D3B3ADAA47B53AF89D /* JFVapImageCacheHelper.m */,
 				42DCFCBF42B912E386F6D5DE /* JFVapResourceDownloader.h */,
 				C4282C512BEC1B069D9F3ECB /* JFVapResourceDownloader.m */,
+				48158874DBAEDB12E37B0DAE /* FamVapTestController.h */,
+				C143A141BBCE3D1879E59E35 /* FamVapTestController.m */,
 			);
 			path = VAP;
 			sourceTree = "<group>";
@@ -162,6 +162,7 @@
 				TargetAttributes = {
 					BBA8A46D8C2DE4B6F1E33891 = {
 						CreatedOnToolsVersion = 26.3;
+						DevelopmentTeam = R4BZ43Z9R2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -323,13 +324,13 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R4BZ43Z9R2;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = QGVAPDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.joyy.qgvapdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.donghong.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -346,13 +347,13 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R4BZ43Z9R2;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = QGVAPDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.joyy.qgvapdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.donghong.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

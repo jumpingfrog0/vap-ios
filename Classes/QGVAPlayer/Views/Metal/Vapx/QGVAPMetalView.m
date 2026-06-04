@@ -15,7 +15,24 @@
 
 #import "QGVAPMetalView.h"
 #import "QGVAPMetalRenderer.h"
+#import "QGHWDMetalRenderer.h"
 #import "QGVAPLogger.h"
+
+@interface QGVAPMetalRenderer (QGVAPRenderRuntime)
+- (void)qgvap_prepareForRendering;
+@end
+
+@interface QGVAPMetalView ()
+
+@property (nonatomic, strong) QGVAPCommonInfo *commonInfo;
+@property (nonatomic, strong) QGVAPMaskInfo *maskInfo;
+@property (nonatomic, strong) CAMetalLayer       *metalLayer;
+@property (nonatomic, strong) QGVAPMetalRenderer *renderer;
+@property (atomic, assign) BOOL                  renderable;
+@property (nonatomic, strong) QGVAPCommonInfo    *pendingCommonInfo;
+@property (nonatomic, strong) QGVAPMaskInfo      *pendingMaskInfo;
+
+@end
 
 #if TARGET_OS_SIMULATOR && defined(QGVAP_DISABLE_METAL_ON_SIMULATOR)//模拟器
 
@@ -25,17 +42,11 @@
 
 - (void)dispose {}
 
+- (void)qgvap_prepareForRendering {}
+
 @end
 
 #else
-
-@interface QGVAPMetalView ()
-
-@property (nonatomic, strong) CAMetalLayer       *metalLayer;
-@property (nonatomic, strong) QGVAPMetalRenderer *renderer;
-@property (nonatomic, assign) BOOL               drawableSizeShouldUpdate;
-
-@end
 
 @implementation QGVAPMetalView
 
@@ -55,43 +66,48 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
-        _drawableSizeShouldUpdate = YES;
         _metalLayer = (CAMetalLayer *)self.layer;
         _metalLayer.frame = self.frame;
         _metalLayer.opaque = NO;
-        _renderer = [[QGVAPMetalRenderer alloc] initWithMetalLayer:_metalLayer];
+        if (!kQGHWDMetalRendererDevice) {
+            kQGHWDMetalRendererDevice = MTLCreateSystemDefaultDevice();
+        }
+        _metalLayer.device = kQGHWDMetalRendererDevice;
         _metalLayer.contentsScale = [UIScreen mainScreen].scale;
         _metalLayer.pixelFormat = MTLPixelFormatBGRA8Unorm;
         _metalLayer.framebufferOnly = YES;
+        [self updateMetalDrawableState];
     }
     return self;
 }
 
 - (void)didMoveToWindow {
     [super didMoveToWindow];
-    self.drawableSizeShouldUpdate = YES;
+    [self updateMetalDrawableState];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.drawableSizeShouldUpdate = YES;
+    [self updateMetalDrawableState];
 }
 
 - (void)dealloc {
-    [self onMetalViewUnavailable];
+    [self dispose];
 }
 
 #pragma mark - getter&setter
 
 - (QGVAPCommonInfo *)commonInfo {
-    return self.renderer.commonInfo;
+    return self.pendingCommonInfo;
 }
 
 - (void)setCommonInfo:(QGVAPCommonInfo *)commonInfo {
+    self.pendingCommonInfo = commonInfo;
     [self.renderer setCommonInfo:commonInfo];
 }
 
 - (void)setMaskInfo:(QGVAPMaskInfo *)maskInfo {
+    self.pendingMaskInfo = maskInfo;
     [self.renderer setMaskInfo:maskInfo];
 }
 
@@ -99,18 +115,11 @@
 
 - (void)display:(CVPixelBufferRef)pixelBuffer mergeInfos:(NSArray<QGVAPMergedInfo *> *)infos {
     
-    if (!self.window) {
+    if (!self.renderable) {
         VAP_Event(kQGVAPModuleCommon, @"quit display pixelbuffer, cuz window is nil!");
-        [self onMetalViewUnavailable];
         return ;
     }
-    if (self.drawableSizeShouldUpdate) {
-        CGFloat nativeScale = [UIScreen mainScreen].nativeScale;
-        CGSize drawableSize = CGSizeMake(CGRectGetWidth(self.bounds)*nativeScale, CGRectGetHeight(self.bounds)*nativeScale);
-        self.metalLayer.drawableSize = drawableSize;
-        VAP_Event(kQGVAPModuleCommon, @"update drawablesize :%@", [NSValue valueWithCGSize:drawableSize]);
-        self.drawableSizeShouldUpdate = NO;
-    }
+    [self qgvap_prepareForRendering];
     [self.renderer renderPixelBuffer:pixelBuffer metalLayer:self.metalLayer mergeInfos:infos];
 }
 
@@ -120,10 +129,39 @@
 
 #pragma mark - private
 
-- (void)onMetalViewUnavailable{
+- (void)qgvap_notifyViewUnavailable {
     
-    if ([self.delegate respondsToSelector:@selector(onMetalViewUnavailable)]) {
-        [self.delegate onMetalViewUnavailable];
+    id<QGVAPMetalViewDelegate> delegate = self.delegate;
+    if ([delegate respondsToSelector:@selector(qgvap_renderViewDidBecomeUnavailable)]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [delegate qgvap_renderViewDidBecomeUnavailable];
+        });
+    }
+}
+
+- (void)updateMetalDrawableState {
+    CGFloat nativeScale = [UIScreen mainScreen].nativeScale;
+    CGSize drawableSize = CGSizeMake(CGRectGetWidth(self.bounds) * nativeScale, CGRectGetHeight(self.bounds) * nativeScale);
+    BOOL renderable = (self.window != nil && drawableSize.width > 0 && drawableSize.height > 0);
+    self.metalLayer.drawableSize = drawableSize;
+    self.renderable = renderable;
+    if (renderable) {
+        VAP_Event(kQGVAPModuleCommon, @"update drawablesize :%@", [NSValue valueWithCGSize:drawableSize]);
+    }
+}
+
+- (void)qgvap_prepareForRendering {
+    if (self.renderer) {
+        [self.renderer qgvap_prepareForRendering];
+        return;
+    }
+    @synchronized (self) {
+        if (!self.renderer) {
+            self.renderer = [[QGVAPMetalRenderer alloc] initWithMetalLayer:self.metalLayer];
+            self.renderer.commonInfo = self.pendingCommonInfo;
+            self.renderer.maskInfo = self.pendingMaskInfo;
+            [self.renderer qgvap_prepareForRendering];
+        }
     }
 }
 

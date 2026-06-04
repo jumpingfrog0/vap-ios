@@ -223,9 +223,9 @@ static const float kQGQuadVerticesConstants[kQGQuadVerticesConstantsRow][kQGQuad
  */
 - (void)renderPixelBuffer:(CVPixelBufferRef)pixelBuffer metalLayer:(CAMetalLayer *)layer {
     
-    if (!layer.superlayer || layer.bounds.size.width <= 0 || layer.bounds.size.height <= 0) {
+    if (!layer || layer.drawableSize.width <= 0 || layer.drawableSize.height <= 0) {
         //https://forums.developer.apple.com/thread/26278
-        VAP_Error(kQGVAPModuleCommon, @"quit rendering cuz layer.superlayer or size error is nil! superlayer:%@ height:%@ width:%@", layer.superlayer, @(layer.bounds.size.height), @(layer.bounds.size.width));
+        VAP_Error(kQGVAPModuleCommon, @"quit rendering cuz drawable size error height:%@ width:%@", @(layer.drawableSize.height), @(layer.drawableSize.width));
         return ;
     }
     [self reconstructIfNeed:layer];
@@ -271,7 +271,7 @@ static const float kQGQuadVerticesConstants[kQGQuadVerticesConstantsRow][kQGQuad
     MTLRenderPassDescriptor *renderPassDescriptor = [MTLRenderPassDescriptor new];
     renderPassDescriptor.colorAttachments[0].texture = drawable.texture; //which returns the texture in which you need to draw in order for something to appear on the screen.
     renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear; //“set the texture to the clear color before doing any drawing,”
-    renderPassDescriptor.colorAttachments[0].clearColor =MTLClearColorMake(1.0, 1.0, 1.0, 1.0);
+    renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.0, 0.0, 0.0, 0.0);
     id<MTLCommandBuffer> commandBuffer = [self.commandQueue commandBuffer];
     id<MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
     [renderEncoder setRenderPipelineState:self.pipelineState];

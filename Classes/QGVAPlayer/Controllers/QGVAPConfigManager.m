@@ -22,6 +22,15 @@
 #import "QGHWDMetalRenderer.h"
 #import "QGVAPTextureLoader.h"
 
+static dispatch_queue_t QGVAPConfigResourceQueue(void) {
+    static dispatch_queue_t queue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        queue = dispatch_queue_create("com.qgame.vap.config.resource", DISPATCH_QUEUE_SERIAL);
+    });
+    return queue;
+}
+
 @interface QGVAPConfigManager () {
     
     QGMP4HWDFileInfo *_fileInfo;
@@ -76,38 +85,45 @@
         }];
     }
     
-    if (![self.delegate respondsToSelector:@selector(vap_loadImageWithURL:context:completion:)]) {
-        return ;
-    }
     __block NSError *loadError = nil;
     dispatch_group_t group = dispatch_group_create();
-    [self.model.resources enumerateObjectsUsingBlock:^(QGVAPSourceInfo * _Nonnull resource, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        NSString *tagContent = resource.contentTagValue;
-        if ([resource.type isEqualToString:kQGAGAttachmentSourceTypeText] && [resource.loadType isEqualToString:QGAGAttachmentSourceLoadTypeLocal]) {
-            resource.sourceImage = [QGVAPTextureLoader drawingImageForText:tagContent color:resource.color size:resource.size bold:[resource.style isEqualToString:kQGAGAttachmentSourceStyleBoldText]];
-        }
-        
-        if ([resource.type isEqualToString:kQGAGAttachmentSourceTypeImg] && [resource.loadType isEqualToString:QGAGAttachmentSourceLoadTypeNet]) {
-            NSString *imageURL = tagContent;
-            
-            NSDictionary *context = @{@"resource":resource};
-            dispatch_group_enter(group);
-            [self.delegate vap_loadImageWithURL:imageURL context:context completion:^(UIImage *image, NSError *error, NSString *imageURL) {
-                if (!image || error) {
-                    VAP_Error(kQGVAPModuleCommon, @"loadImageWithURL %@ error:%@", imageURL, error);
-                    loadError = (loadError ?: (error ?: ([NSError errorWithDomain:[NSString stringWithFormat:@"loadImageError:%@", imageURL] code:-1 userInfo:nil])));
-                }
-                resource.sourceImage = image;
-                dispatch_group_leave(group);
-            }];
-        }
-    }];
+    BOOL canLoadImage = [self.delegate respondsToSelector:@selector(vap_loadImageWithURL:context:completion:)];
     
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        if ([self.delegate respondsToSelector:@selector(onVAPConfigResourcesLoaded:error:)]) {
-            [self.delegate onVAPConfigResourcesLoaded:self.model error:loadError];
-        }
+    dispatch_async(QGVAPConfigResourceQueue(), ^{
+        [self.model.resources enumerateObjectsUsingBlock:^(QGVAPSourceInfo * _Nonnull resource, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            NSString *tagContent = resource.contentTagValue;
+            if ([resource.type isEqualToString:kQGAGAttachmentSourceTypeText] && [resource.loadType isEqualToString:QGAGAttachmentSourceLoadTypeLocal]) {
+                resource.sourceImage = [QGVAPTextureLoader drawingImageForText:tagContent color:resource.color size:resource.size bold:[resource.style isEqualToString:kQGAGAttachmentSourceStyleBoldText]];
+            }
+            
+            if ([resource.type isEqualToString:kQGAGAttachmentSourceTypeImg] && [resource.loadType isEqualToString:QGAGAttachmentSourceLoadTypeNet] && canLoadImage) {
+                NSString *imageURL = tagContent;
+                
+                NSDictionary *context = @{@"resource":resource};
+                dispatch_group_enter(group);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.delegate vap_loadImageWithURL:imageURL context:context completion:^(UIImage *image, NSError *error, NSString *imageURL) {
+                        dispatch_async(QGVAPConfigResourceQueue(), ^{
+                            if (!image || error) {
+                                VAP_Error(kQGVAPModuleCommon, @"loadImageWithURL %@ error:%@", imageURL, error);
+                                loadError = (loadError ?: (error ?: ([NSError errorWithDomain:[NSString stringWithFormat:@"loadImageError:%@", imageURL] code:-1 userInfo:nil])));
+                            }
+                            resource.sourceImage = image;
+                            dispatch_group_leave(group);
+                        });
+                    }];
+                });
+            }
+        }];
+        
+        dispatch_group_notify(group, QGVAPConfigResourceQueue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.delegate respondsToSelector:@selector(onVAPConfigResourcesLoaded:error:)]) {
+                    [self.delegate onVAPConfigResourcesLoaded:self.model error:loadError];
+                }
+            });
+        });
     });
 }
 

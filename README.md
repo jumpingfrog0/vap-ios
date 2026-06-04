@@ -14,7 +14,14 @@
 在 `Podfile` 中添加：
 
 ```ruby
-pod 'QGVAPlayer', :git => 'https://git.duowan.com/voicetech/ios/vap-ios.git'
+pod 'QGVAPlayer', '1.0.19'
+```
+
+如果使用内部 Git 仓库源：
+
+```ruby
+pod 'QGVAPlayer',
+    :git => 'https://github.com/jumpingfrog0/vap-ios.git',
 ```
 
 然后执行：

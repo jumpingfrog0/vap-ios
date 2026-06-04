@@ -23,9 +23,11 @@ static NSString *const kJFVapDemoAvatarURL = @"https://o-sg.taddaapp.com/appres/
 @property (nonatomic, strong) NSMutableArray<JFVapDebugConfigModel *> *dataList;
 @property (nonatomic, weak) UITableView *debugTableView;
 @property (nonatomic, weak) UISwitch *pauseGestureSwitch;
+@property (nonatomic, weak) UISwitch *renderBackendSwitch;
 @property (nonatomic, weak) UISegmentedControl *backgroundOperationSegmentedControl;
 @property (nonatomic, weak) UIView *currentEffectContainerView;
 @property (nonatomic, assign) BOOL enablePauseGestureForFamVapWrapView;
+@property (nonatomic, assign) BOOL renderByOpenGL;
 @property (nonatomic, assign) HWDMP4EBOperationType enterBackgroundOperationType;
 @property (nonatomic, assign) BOOL isTencentVap;
 @property (nonatomic, assign) BOOL isBigoVap;
@@ -69,6 +71,7 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
 {
     self.dataList = [NSMutableArray array];
     self.enablePauseGestureForFamVapWrapView = NO;
+    self.renderByOpenGL = NO;
     self.enterBackgroundOperationType = HWDMP4EBOperationTypeStop;
 }
 
@@ -76,8 +79,8 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
 {
     __weak typeof(self) weakSelf = self;
 
-    [self addTestItem:@"非Vap资源（退后台结束）" clickCallback:^{
-        [weakSelf playNotVapResource];
+    [self addTestItem:@"mp4-Alpha通道在下" clickCallback:^{
+        [weakSelf playMP4_BottomAlpha];
     }];
     [self addTestItem:@"融合特效（退后台暂停/恢复）" clickCallback:^{
         [weakSelf playVapWithTencentResource2];
@@ -159,11 +162,47 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
     }];
     self.pauseGestureSwitch = pauseGestureSwitch;
 
-    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectZero];
-    separatorView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
-    [settingContainerView addSubview:separatorView];
-    [separatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *gestureSeparatorView = [[UIView alloc] initWithFrame:CGRectZero];
+    gestureSeparatorView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+    [settingContainerView addSubview:gestureSeparatorView];
+    [gestureSeparatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(gestureDescLabel.mas_bottom).offset(14.0);
+        make.leading.equalTo(settingContainerView).offset(14.0);
+        make.trailing.equalTo(settingContainerView).offset(-14.0);
+        make.height.equalTo(@1);
+    }];
+
+    UILabel *renderBackendTitleLabel = [self settingTitleLabelWithText:@"使用 OpenGL 渲染"];
+    [settingContainerView addSubview:renderBackendTitleLabel];
+    [renderBackendTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(gestureSeparatorView.mas_bottom).offset(14.0);
+        make.leading.equalTo(settingContainerView).offset(14.0);
+        make.trailing.lessThanOrEqualTo(settingContainerView).offset(-72.0);
+    }];
+
+    UILabel *renderBackendDescLabel = [self settingDescLabelWithText:@"关闭时使用 Metal，打开后后续播放使用 OpenGL。"];
+    [settingContainerView addSubview:renderBackendDescLabel];
+    [renderBackendDescLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(renderBackendTitleLabel.mas_bottom).offset(6.0);
+        make.leading.equalTo(renderBackendTitleLabel);
+        make.trailing.equalTo(settingContainerView).offset(-14.0);
+    }];
+
+    UISwitch *renderBackendSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+    renderBackendSwitch.on = self.renderByOpenGL;
+    [renderBackendSwitch addTarget:self action:@selector(onRenderBackendSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+    [settingContainerView addSubview:renderBackendSwitch];
+    [renderBackendSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(renderBackendTitleLabel);
+        make.trailing.equalTo(settingContainerView).offset(-14.0);
+    }];
+    self.renderBackendSwitch = renderBackendSwitch;
+
+    UIView *renderBackendSeparatorView = [[UIView alloc] initWithFrame:CGRectZero];
+    renderBackendSeparatorView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+    [settingContainerView addSubview:renderBackendSeparatorView];
+    [renderBackendSeparatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(renderBackendDescLabel.mas_bottom).offset(14.0);
         make.leading.equalTo(settingContainerView).offset(14.0);
         make.trailing.equalTo(settingContainerView).offset(-14.0);
         make.height.equalTo(@1);
@@ -172,7 +211,7 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
     UILabel *backgroundTitleLabel = [self settingTitleLabelWithText:@"退后台行为（HWDMP4EBOperationType）"];
     [settingContainerView addSubview:backgroundTitleLabel];
     [backgroundTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(separatorView.mas_bottom).offset(14.0);
+        make.top.equalTo(renderBackendSeparatorView.mas_bottom).offset(14.0);
         make.leading.equalTo(settingContainerView).offset(14.0);
         make.trailing.equalTo(settingContainerView).offset(-14.0);
     }];
@@ -235,6 +274,11 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
     self.enablePauseGestureForFamVapWrapView = sender.isOn;
 }
 
+- (void)onRenderBackendSwitchChanged:(UISwitch *)sender
+{
+    self.renderByOpenGL = sender.isOn;
+}
+
 - (void)onBackgroundOperationSegmentChanged:(UISegmentedControl *)sender
 {
     self.enterBackgroundOperationType = (HWDMP4EBOperationType)sender.selectedSegmentIndex;
@@ -253,6 +297,17 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
 - (HWDMP4EBOperationType)currentEnterBackgroundOperationType
 {
     return self.enterBackgroundOperationType;
+}
+
+- (void)applyCurrentRenderBackendToVAPView:(VAPView *)vapView
+{
+    vapView.hwd_renderByOpenGL = self.renderByOpenGL;
+}
+
+- (void)applyCurrentRenderBackendToWrapView:(QGVAPWrapView *)wrapView
+{
+    [wrapView initVAPViewIfNeed];
+    [self applyCurrentRenderBackendToVAPView:wrapView.vapView];
 }
 
 - (UIView *)effectContainerView
@@ -306,10 +361,10 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
 
 #pragma mark - Play Items
 
-- (void)playNotVapResource
+- (void)playMP4_BottomAlpha
 {
     [self download:@"https://o-sg.famoapp.com/appres/50994475-6bfd-4904-831d-e2fc62baeaf5.mp4" callback:^(NSString *filePath) {
-        [self playNotVap:filePath];
+        [self playVap:filePath contentMode:QGVAPWrapViewContentModeAspectFit blendMode:QGHWDTextureBlendMode_AlphaBottom];
     }];
 }
 
@@ -354,14 +409,14 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
 - (void)playMP4_LeftAlpha
 {
     [self download:@"https://o-sg.famoapp.com/turnover/a28152ee-1d84-4364-e097-141938099156.mp4" callback:^(NSString *filePath) {
-        [self playVap:filePath contentMode:QGVAPWrapViewContentModeAspectFit];
+        [self playVap:filePath contentMode:QGVAPWrapViewContentModeAspectFit blendMode:QGHWDTextureBlendMode_AlphaLeft];
     }];
 }
 
 - (void)playMP4_LeftAlpha2
 {
     [self download:@"https://o-sg.famoapp.com/turnover/4554f07d-f600-4e00-f7a8-965cb9f5a4b8.mp4" callback:^(NSString *filePath) {
-        [self playVap:filePath contentMode:QGVAPWrapViewContentModeAspectFit];
+        [self playVap:filePath contentMode:QGVAPWrapViewContentModeAspectFit blendMode:QGHWDTextureBlendMode_AlphaLeft];
     }];
 }
 
@@ -389,7 +444,7 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
 - (void)playRocketResource
 {
     [self download:@"https://o-sg.famoapp.com/universal/b1702b45-e239-4ec8-d8fc-a15b927615ae.mp4" callback:^(NSString *filePath) {
-        [self playVap:filePath contentMode:QGVAPWrapViewContentModeAspectFit blendMode:QGHWDTextureBlendMode_AlphaRight];
+        [self playVap:filePath contentMode:QGVAPWrapViewContentModeAspectFit];
     }];
 }
 
@@ -397,13 +452,7 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
 
 - (void)playNotVap:(NSString *)resPath
 {
-    VAPView *mp4View = [[VAPView alloc] initWithFrame:self.view.bounds];
-    mp4View.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
-    mp4View.userInteractionEnabled = YES;
-    mp4View.hwd_enterBackgroundOP = [self currentEnterBackgroundOperationType];
-    [self.view addSubview:mp4View];
-    [mp4View enableOldVersion:YES];
-    [mp4View playHWDMP4:resPath repeatCount:0 delegate:self];
+    [self playVap:resPath contentMode:QGVAPWrapViewContentModeAspectFit blendMode:QGHWDTextureBlendMode_AlphaLeft];
 }
 
 - (void)playVapx:(NSString *)resPath
@@ -412,6 +461,7 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
     mp4View.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
     mp4View.userInteractionEnabled = YES;
     mp4View.hwd_enterBackgroundOP = [self currentEnterBackgroundOperationType];
+    [self applyCurrentRenderBackendToVAPView:mp4View];
     [self.view addSubview:mp4View];
     [mp4View setMute:NO];
     [mp4View playHWDMP4:resPath repeatCount:0 delegate:self];
@@ -426,6 +476,7 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
         wrapView.contentMode = QGVAPWrapViewContentModeAspectFit;
         wrapView.autoDestoryAfterFinish = YES;
         wrapView.hwd_enterBackgroundOP = [self currentEnterBackgroundOperationType];
+        [self applyCurrentRenderBackendToWrapView:wrapView];
         [self.view addSubview:wrapView];
         [wrapView setMute:NO];
         [wrapView playHWDMP4:filePath repeatCount:0 delegate:self];
@@ -452,15 +503,11 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
     wrapView.contentMode = contentMode;
     wrapView.autoDestoryAfterFinish = YES;
     wrapView.hwd_enterBackgroundOP = [self currentEnterBackgroundOperationType];
+    [self applyCurrentRenderBackendToWrapView:wrapView];
     self.currentEffectContainerView = containerView;
     [containerView addSubview:wrapView];
     [wrapView setMute:NO];
-
-    if (blendMode == QGHWDTextureBlendMode_AlphaRight) {
-        [wrapView playHWDMP4:resPath blendMode:blendMode repeatCount:0 delegate:self];
-    } else {
-        [wrapView playHWDMP4:resPath playCount:1 delegate:self];
-    }
+    [wrapView playHWDMP4:resPath blendMode:blendMode playCount:1 delegate:self];
 
     [self bindPauseGestureForFamVapWrapView:wrapView];
     wrapView.userInteractionEnabled = NO;
@@ -563,8 +610,7 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
 
 - (NSString *)vapWrapview_contentForVapTag:(NSString *)tag resource:(QGVAPSourceInfo *)info
 {
-    NSLog(@"vap key-value = %@ : %@", info.contentTag, info.contentTagValue);
-
+    NSString *content = nil;
     if (self.isTencentVap) {
         NSDictionary *extraInfo = @{
             @"[imgUser]": kJFVapDemoAvatarURL,
@@ -572,16 +618,24 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
             @"[textAnchor]": @"文字1",
             @"[textUser]": @"文字2"
         };
-        return extraInfo[tag] ?: @"";
+        content = extraInfo[tag];
     }
 
-    if (self.isBigoVap) {
+    if (!content && self.isBigoVap) {
         NSDictionary *extraInfo = @{
             @"p_img": kJFVapDemoAvatarURL,
             @"p_text": @"文字1",
             @"p_txt": @"文字1"
         };
-        return extraInfo[tag] ?: @"";
+        content = extraInfo[tag];
+    }
+
+    if (content.length > 0) {
+        return content;
+    }
+
+    if ([info.type isEqualToString:kQGAGAttachmentSourceTypeText]) {
+        return @" ";
     }
 
     return @"";
@@ -592,15 +646,43 @@ void QG_VAP_Logger_handler(VAPLogLevel level, const char *file, int line, const 
     QGVAPSourceInfo *resource = context[@"resource"];
     if ([resource.type isEqualToString:kQGAGAttachmentSourceTypeImg] &&
         [resource.loadType isEqualToString:QGAGAttachmentSourceLoadTypeNet]) {
+        if (urlStr.length == 0) {
+            if (completionBlock) {
+                completionBlock([self transparentVAPFallbackImage], nil, urlStr);
+            }
+            return;
+        }
+
         [JFVapImageCacheHelper getLocalImageURLForURL:[NSURL URLWithString:urlStr] completion:^(NSURL *localURL, NSError *error) {
             if (error || !localURL) {
+                if (completionBlock) {
+                    completionBlock(nil, error, urlStr);
+                }
                 return;
             }
 
-            UIImage *image = [UIImage imageWithContentsOfFile:localURL.path];
-            completionBlock(image, nil, urlStr);
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+                UIImage *image = [UIImage imageWithContentsOfFile:localURL.path];
+                if (completionBlock) {
+                    completionBlock(image, nil, urlStr);
+                }
+            });
         }];
     }
+}
+
+- (UIImage *)transparentVAPFallbackImage
+{
+    static UIImage *image = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, 1), NO, 0);
+        [[UIColor clearColor] setFill];
+        UIRectFill(CGRectMake(0, 0, 1, 1));
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    });
+    return image;
 }
 
 #pragma mark - Gesture

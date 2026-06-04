@@ -28,20 +28,14 @@
  */
 @protocol QGHWDMetelViewDelegate <NSObject>
 
-- (void)onMetalViewUnavailable;
+- (void)qgvap_renderViewDidBecomeUnavailable;
 
 @end
 
 @interface QGHWDMetalView : UIView
 
 @property (nonatomic, weak) id<QGHWDMetelViewDelegate> delegate;
-@property (nonatomic, assign) QGHWDTextureBlendMode blendMode;
-
-- (instancetype)initWithFrame:(CGRect)frame blendMode:(QGHWDTextureBlendMode)mode;
-
-- (void)display:(CVPixelBufferRef)pixelBuffer;
 
 - (void)dispose;
 
 @end
-

@@ -56,6 +56,8 @@ typedef NS_ENUM(NSUInteger, HWDMP4EBOperationType) {
 - (void)playHWDMp4:(NSString *)filePath;
 - (void)playHWDMP4:(NSString *)filePath delegate:(id<HWDMP4PlayDelegate>)delegate;
 - (void)playHWDMP4:(NSString *)filePath repeatCount:(NSInteger)repeatCount delegate:(id<HWDMP4PlayDelegate>)delegate;
+- (void)playHWDMP4:(NSString *)filePath blendMode:(QGHWDTextureBlendMode)mode delegate:(id<HWDMP4PlayDelegate>)delegate;
+- (void)playHWDMP4:(NSString *)filePath blendMode:(QGHWDTextureBlendMode)mode repeatCount:(NSInteger)repeatCount delegate:(id<HWDMP4PlayDelegate>)delegate;
 
 - (void)stopHWDMP4;
 
@@ -84,16 +86,5 @@ typedef NS_ENUM(NSUInteger, HWDMP4EBOperationType) {
 @interface UIView (VAPMask)
 
 @property (nonatomic, strong) QGVAPMaskInfo *vap_maskInfo;
-
-@end
-
-@interface UIView (MP4HWDDeprecated)
-
-- (void)playHWDMP4:(NSString *)filePath blendMode:(QGHWDTextureBlendMode)mode delegate:(id<HWDMP4PlayDelegate>)delegate  __attribute__((deprecated("QGHWDTextureBlendMode is no longer work in vap, use playHWDMP4:delegate: instead")));
-- (void)playHWDMP4:(NSString *)filePath blendMode:(QGHWDTextureBlendMode)mode repeatCount:(NSInteger)repeatCount delegate:(id<HWDMP4PlayDelegate>)delegate  __attribute__((deprecated("QGHWDTextureBlendMode is no longer work in vap, use playHWDMP4:repeatCount:delegate: instead")));
-- (void)playHWDMP4:(NSString *)filePath fps:(NSInteger)fps delegate:(id<HWDMP4PlayDelegate>)delegate  __attribute__((deprecated("customized fps is not recommended, use playHWDMP4:delegate: instead")));
-- (void)playHWDMP4:(NSString *)filePath fps:(NSInteger)fps repeatCount:(NSInteger)repeatCount delegate:(id<HWDMP4PlayDelegate>)delegate __attribute__((deprecated("customized fps is not recommended, use playHWDMP4:repeatCount:delegate: instead")));
-- (void)playHWDMP4:(NSString *)filePath fps:(NSInteger)fps blendMode:(QGHWDTextureBlendMode)mode delegate:(id<HWDMP4PlayDelegate>)delegate __attribute__((deprecated("customized fps is not recommended, use playHWDMP4:delegate: instead")));
-- (void)playHWDMP4:(NSString *)filePath fps:(NSInteger)fps blendMode:(QGHWDTextureBlendMode)mode repeatCount:(NSInteger)repeatCount delegate:(id<HWDMP4PlayDelegate>)delegate __attribute__((deprecated("customized fps is not recommended, use playHWDMP4:repeatCount:delegate: instead")));
 
 @end

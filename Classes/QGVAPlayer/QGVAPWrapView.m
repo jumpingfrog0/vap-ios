@@ -16,8 +16,15 @@
 #import "QGVAPWrapView.h"
 #import "QGVAPConfigModel.h"
 #import "QGMP4HWDFileInfo.h"
+#import <math.h>
+
+static BOOL QGVAPSizeIsValid(CGSize size) {
+    return isfinite(size.width) && isfinite(size.height) && size.width > 0 && size.height > 0;
+}
 
 @interface QGVAPWrapView()<VAPWrapViewDelegate, HWDMP4PlayDelegate>
+
+@property (nonatomic, assign) CGSize vap_contentVideoSize;
 
 @end
 
@@ -46,6 +53,7 @@
     if (!_vapView) {
         _vapView = [[VAPView alloc] initWithFrame:self.bounds];
         [self addSubview:_vapView];
+        [self layoutVAPViewForCurrentContentMode];
     }
 }
 
@@ -138,6 +146,13 @@
 }
 
 #pragma mark - UIView
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self layoutVAPViewForCurrentContentMode];
+}
+
 // 自身不响应，仅子视图响应。
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     if (!self.isUserInteractionEnabled || self.isHidden || self.alpha < 0.01) {
@@ -158,75 +173,35 @@
 
 #pragma mark - Private
 
-- (void)p_setupContentModeWithConfig:(QGVAPConfigModel *)config {
-    CGFloat realWidth = 0.;
-    CGFloat realHeight = 0.;
-    
-    if (!config) {
-        return;
-    }
-    
-    CGFloat layoutWidth = self.bounds.size.width;
-    CGFloat layoutHeight = self.bounds.size.height;
-    
-    CGFloat layoutRatio = self.bounds.size.width / self.bounds.size.height;
-    CGFloat videoRatio = config.info.size.width / config.info.size.height;
-    
-    switch (self.contentMode) {
-        case QGVAPWrapViewContentModeScaleToFill: {
-
-        }
-            break;
-        case QGVAPWrapViewContentModeAspectFit: {
-            if (layoutRatio < videoRatio) {
-                realWidth = layoutWidth;
-                realHeight = realWidth / videoRatio;
-            } else {
-                realHeight = layoutHeight;
-                realWidth = videoRatio * realHeight;
-            }
-            
-            self.vapView.frame = CGRectMake(0, 0, realWidth, realHeight);
-            self.vapView.center = self.center;
-        }
-            break;;
-        case QGVAPWrapViewContentModeAspectFill: {
-            if (layoutRatio > videoRatio) {
-                realWidth = layoutWidth;
-                realHeight = realWidth / videoRatio;
-            } else {
-                realHeight = layoutHeight;
-                realWidth = videoRatio * realHeight;
-            }
-            
-            self.vapView.frame = CGRectMake(0, 0, realWidth, realHeight);
-            self.vapView.center = self.center;
-        }
-            break;;
-        default:
-            break;
-    }
+- (void)setupContentModeWithConfig:(QGVAPConfigModel *)config {
+    [self setupContentModeWithVideoSize:config.info.size];
 }
 
-- (void)p_setupContentModeWithVideoSize:(CGSize)videoSize {
-    CGFloat realWidth = 0.;
-    CGFloat realHeight = 0.;
-    
-    if (videoSize.width <= 0 || videoSize.height <= 0) {
+- (void)setupContentModeWithVideoSize:(CGSize)videoSize {
+    self.vap_contentVideoSize = QGVAPSizeIsValid(videoSize) ? videoSize : CGSizeZero;
+    [self layoutVAPViewForCurrentContentMode];
+}
+
+- (void)layoutVAPViewForCurrentContentMode {
+    if (!self.vapView || !QGVAPSizeIsValid(self.bounds.size)) {
         return;
     }
     
     CGFloat layoutWidth = self.bounds.size.width;
     CGFloat layoutHeight = self.bounds.size.height;
-    
-    CGFloat layoutRatio = self.bounds.size.width / self.bounds.size.height;
+    CGSize videoSize = self.vap_contentVideoSize;
+
+    if (self.contentMode == QGVAPWrapViewContentModeScaleToFill || !QGVAPSizeIsValid(videoSize)) {
+        self.vapView.frame = self.bounds;
+        return;
+    }
+
+    CGFloat realWidth = layoutWidth;
+    CGFloat realHeight = layoutHeight;
+    CGFloat layoutRatio = layoutWidth / layoutHeight;
     CGFloat videoRatio = videoSize.width / videoSize.height;
     
     switch (self.contentMode) {
-        case QGVAPWrapViewContentModeScaleToFill: {
-
-        }
-            break;
         case QGVAPWrapViewContentModeAspectFit: {
             if (layoutRatio < videoRatio) {
                 realWidth = layoutWidth;
@@ -235,11 +210,8 @@
                 realHeight = layoutHeight;
                 realWidth = videoRatio * realHeight;
             }
-            
-            self.vapView.frame = CGRectMake(0, 0, realWidth, realHeight);
-            self.vapView.center = self.center;
         }
-            break;;
+            break;
         case QGVAPWrapViewContentModeAspectFill: {
             if (layoutRatio > videoRatio) {
                 realWidth = layoutWidth;
@@ -248,14 +220,15 @@
                 realHeight = layoutHeight;
                 realWidth = videoRatio * realHeight;
             }
-            
-            self.vapView.frame = CGRectMake(0, 0, realWidth, realHeight);
-            self.vapView.center = self.center;
         }
-            break;;
+            break;
+        case QGVAPWrapViewContentModeScaleToFill:
         default:
             break;
     }
+
+    self.vapView.frame = CGRectMake(0, 0, realWidth, realHeight);
+    self.vapView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
 }
 
 #pragma mark -  mp4 hwd delegate
@@ -299,7 +272,7 @@
     
     if (config) {
         // vap 资源
-        [self p_setupContentModeWithConfig:config];
+        [self setupContentModeWithConfig:config];
         
         if ([self.delegate respondsToSelector:@selector(vapWrap_viewshouldStartPlayMP4:config:)]) {
             return [self.delegate vapWrap_viewshouldStartPlayMP4:container config:config];
@@ -342,7 +315,7 @@
             videoSize = CGSizeMake(videoSize.width, videoSize.height / 2.0);
         }
         
-        [self p_setupContentModeWithVideoSize:videoSize];
+        [self setupContentModeWithVideoSize:videoSize];
         
         if ([self.delegate respondsToSelector:@selector(vapWrap_viewshouldStartPlayMP4:config:)]) {
             return [self.delegate vapWrap_viewshouldStartPlayMP4:container config:config];
@@ -362,18 +335,57 @@
 
 //provide the content for tags, maybe text or url string ...
 - (NSString *)contentForVapTag:(NSString *)tag resource:(QGVAPSourceInfo *)info {
+    NSString *content = nil;
     if ([self.delegate respondsToSelector:@selector(vapWrapview_contentForVapTag:resource:)]) {
-        return [self.delegate vapWrapview_contentForVapTag:tag resource:info];
+        content = [self.delegate vapWrapview_contentForVapTag:tag resource:info];
     }
-    
-    return nil;
+
+    if (content.length > 0) {
+        return content;
+    }
+
+    if ([info.type isEqualToString:kQGAGAttachmentSourceTypeText]) {
+        return @" ";
+    }
+
+    return @"";
 }
 
 //provide image for url from tag content
 - (void)loadVapImageWithURL:(NSString *)urlStr context:(NSDictionary *)context completion:(VAPImageCompletionBlock)completionBlock {
-    if ([self.delegate respondsToSelector:@selector(vapWrapView_loadVapImageWithURL:context:completion:)]) {
-        [self.delegate vapWrapView_loadVapImageWithURL:urlStr context:context completion:completionBlock];
+    if (!completionBlock) {
+        return;
     }
+
+    if (urlStr.length == 0 ||
+        ![self.delegate respondsToSelector:@selector(vapWrapView_loadVapImageWithURL:context:completion:)]) {
+        completionBlock([self qgvap_transparentFallbackImage], nil, urlStr);
+        return;
+    }
+
+    if ([self.delegate respondsToSelector:@selector(vapWrapView_loadVapImageWithURL:context:completion:)]) {
+        [self.delegate vapWrapView_loadVapImageWithURL:urlStr context:context completion:^(UIImage *image, NSError *error, NSString *imageURL) {
+            if (image) {
+                completionBlock(image, nil, imageURL ?: urlStr);
+                return;
+            }
+            completionBlock([self qgvap_transparentFallbackImage], nil, imageURL ?: urlStr);
+        }];
+    }
+}
+
+- (UIImage *)qgvap_transparentFallbackImage
+{
+    static UIImage *image = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, 1), NO, 0);
+        [[UIColor clearColor] setFill];
+        UIRectFill(CGRectMake(0, 0, 1, 1));
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    });
+    return image;
 }
 
 @end

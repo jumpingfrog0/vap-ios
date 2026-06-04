@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger, QGVAPWrapViewContentMode) {
  */
 @interface QGVAPWrapView : UIView
 
-@property (nonatomic, strong) VAPView *vapView;
+@property (nonatomic, strong, nullable) VAPView *vapView;
 
 @property (nonatomic, weak) id<VAPWrapViewDelegate> delegate;
 

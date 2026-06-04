@@ -63,9 +63,9 @@
 
 - (void)renderPixelBuffer:(CVPixelBufferRef)pixelBuffer metalLayer:(CAMetalLayer *)layer mergeInfos:(NSArray<QGVAPMergedInfo *> *)infos {
     
-    if (!layer.superlayer || layer.bounds.size.width <= 0 || layer.bounds.size.height <= 0) {
+    if (!layer || layer.drawableSize.width <= 0 || layer.drawableSize.height <= 0) {
         //https://forums.developer.apple.com/thread/26278
-        VAP_Error(kQGVAPModuleCommon, @"quit rendering cuz layer.superlayer or size error is nil! superlayer:%@ height:%@ width:%@", layer.superlayer, @(layer.bounds.size.height), @(layer.bounds.size.width));
+        VAP_Error(kQGVAPModuleCommon, @"quit rendering cuz drawable size error height:%@ width:%@", @(layer.drawableSize.height), @(layer.drawableSize.width));
         return ;
     }
     [self reconstructIfNeed:layer];
@@ -217,6 +217,18 @@
     if (textureCacheError != kCVReturnSuccess) {
         VAP_Error(kQGVAPModuleCommon, @"create texture cache fail!:%@", textureCacheError);
     }
+}
+
+- (void)qgvap_prepareForRendering {
+    if (self.maskInfo) {
+        (void)self.mainPipelineStateForMask;
+        if (self.maskInfo.blurLength > 0) {
+            (void)self.mainPipelineStateForMaskBlur;
+        }
+    } else {
+        (void)self.defaultMainPipelineState;
+    }
+    (void)self.attachmentPipelineState;
 }
 
 - (void)drawMergedAttachments:(NSArray<QGVAPMergedInfo *> *)infos

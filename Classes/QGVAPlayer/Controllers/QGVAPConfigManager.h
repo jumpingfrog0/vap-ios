@@ -37,8 +37,5 @@
 
 - (instancetype)initWith:(QGMP4HWDFileInfo *)fileInfo;
 - (void)loadConfigResources;
-- (void)loadMTLTextures:(id<MTLDevice>)device;
-- (void)loadMTLBuffers:(id<MTLDevice>)device;
 
 @end
-

@@ -23,6 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
          playCount:(NSInteger)playCount
           delegate:(id<VAPWrapViewDelegate>)delegate;
 
+- (void)playHWDMP4:(NSString *)filePath
+         blendMode:(QGHWDTextureBlendMode)mode
+         playCount:(NSInteger)playCount
+          delegate:(id<VAPWrapViewDelegate>)delegate;
+
 @end
 
 NS_ASSUME_NONNULL_END
