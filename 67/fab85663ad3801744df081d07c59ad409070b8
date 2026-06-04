@@ -1,0 +1,49 @@
+Classes/QGVAPlayer/Views/Metal/Vapx/QGVAPMetalRenderer.m
+  s_5c77fddb2a4a73::t_6723c4692f8439 222-233
+Classes/QGVAPlayer/Views/Metal/QGHWDMetalView.m
+  s_5c77fddb2a4a73::t_413ba996ee9a23 78,91-94,108,140-150
+  s_5c77fddb2a4a73::t_babfcd5dd8f4d3 32-33
+Classes/QGVAPlayer/QGVAPWrapView.m
+  s_5c77fddb2a4a73::t_b802d1743989ba 19,21-24,166,170,177,216,220,227,307,350
+Classes/QGVAPlayer/UIView+VAP.m
+  s_5c77fddb2a4a73::t_a6bea18cec0703 833
+  s_5c77fddb2a4a73::t_1f1bf8e962d481 492,494-513,520-521,523,525-526,528-534,539,542,548,550-552,555,574,576,579,581,588,590,592-596,598,600-601,603-610,612-613,616-619,622-623,625-626
+  s_5c77fddb2a4a73::t_24874baa7dddfc 57-70,72-92,112
+  s_5c77fddb2a4a73::t_b78b8f7bfc575c 71
+  s_5c77fddb2a4a73::t_9dd7bd915596d6 182-185,197-204,212,219
+  s_5c77fddb2a4a73::t_5586194120b506 335-336,338,340,343
+  s_5c77fddb2a4a73::t_1f9f03689891be 614-615,621
+  s_5c77fddb2a4a73::t_a650ecb0a1f1f9 158,165,647,662
+  s_5c77fddb2a4a73::t_3701074e92eef6 742,749
+  s_5c77fddb2a4a73::t_c80c86cc17f868 390-391
+  s_5c77fddb2a4a73::t_91bfca306ad362 122,125,137,148,152,171,181,186,196,208,224,247,251,254,272,295,300,306,350,359,368,380,407,419,440,459,474,479,484,493,515,522,575,580,602,611,644,659,740,769,847,858,872,880,891,905,909,936,946,956,965,970,980,990
+  s_5c77fddb2a4a73::t_04159c36f67bd6 296-299,301-302
+  s_5c77fddb2a4a73::t_c852fabc0b2dcf 331-334
+  s_5c77fddb2a4a73::t_e6f8b3cc02ebd6 699,713
+Classes/FamVapWrapper/FamVapWrapView.m
+  s_5c77fddb2a4a73::t_38c916527e598f 33,49,65,67-71
+Classes/QGVAPlayer/Controllers/QGVAPConfigManager.m
+  s_5c77fddb2a4a73::t_3802a9ef120a26 29,107-109,112-114,120-125
+Classes/QGVAPlayer/Views/Metal/Vapx/QGVAPMetalView.m
+  s_5c77fddb2a4a73::t_06f4fdf2af71a6 33
+  s_5c77fddb2a4a73::t_a5f2b55b011c39 153
+  s_5c77fddb2a4a73::t_57b5d450983e73 18,21-23
+  s_5c77fddb2a4a73::t_de2e2eb6c6761f 44-45,70-73,93,99,103,108,120,148-152,154-162
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "67fab85663ad3801744df081d07c59ad409070b8",
+  "prompts": {},
+  "logical_commit_id": "67fab85663ad3801744df081d07c59ad409070b8",
+  "sessions": {
+    "s_5c77fddb2a4a73": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e870e-7234-75d0-ac3b-08f1a289a8f7",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}

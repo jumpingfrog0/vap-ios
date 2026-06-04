@@ -1,0 +1,85 @@
+Classes/QGVAPlayer/Renderers/QGVAPVAPMetalFrameRenderer.m
+  s_5093ac927fdfbc::t_1b46eadbbbe75c 19-25,48,55,58,60-61,63,76-81,86-88
+  s_5093ac927fdfbc::t_d07828080556f7 28-29,31
+  s_5093ac927fdfbc::t_14499bcdd63fb1 45,49,62,64,82-83,107-108
+Classes/QGVAPlayer/QGVAPWrapView.h
+  s_5093ac927fdfbc::t_fc44e3219f0173 53
+Classes/QGVAPlayer/Views/Metal/Vapx/QGVAPMetalView.h
+  s_5093ac927fdfbc::t_57ebf78615918e 23
+Classes/QGVAPlayer/Views/OpenGL/QGHWDMP4OpenGLView.h
+  s_5093ac927fdfbc::t_c9d5ce96b57082 25,34
+Classes/QGVAPlayer/Views/Metal/QGHWDMetalView.h
+  s_5093ac927fdfbc::t_f137567565ca0e 31
+Classes/QGVAPlayer/QGVAPWrapView.m
+  s_5093ac927fdfbc::t_c448d32225c219 404
+  s_5093ac927fdfbc::t_26db1805d11b78 370,372,374-383,388-397,399-403,405,407-420
+Example/QGVAPDemo/QGVAPDemo/VAP/FamVapTestController.m
+  s_5093ac927fdfbc::t_1e1d4e5fd6c006 447
+  s_5093ac927fdfbc::t_ce6905064940e9 656-662,679-692
+  s_5093ac927fdfbc::t_02575feeeae708 620,628,631,637-641,644-645
+  s_5093ac927fdfbc::t_b900cca26afa1c 412,419,517
+Classes/FamVapWrapper/FamVapWrapView.m
+  s_5093ac927fdfbc::t_b900cca26afa1c 20-27
+Classes/QGVAPlayer/Renderers/QGVAPFrameRenderer.h
+  s_5093ac927fdfbc::t_a0393c544bca79 23
+  s_5093ac927fdfbc::t_f83ca51724fa6f 50-53
+  s_5093ac927fdfbc::t_8f9952b676201b 22,35-47,61-62,71
+Classes/QGVAPlayer/Renderers/QGVAPOpenGLFrameRenderer.m
+  s_5093ac927fdfbc::t_fa4aebec7378e7 18
+  s_5093ac927fdfbc::t_4f9d0fd0282a06 21,23,48,51,70,75-78,84
+  s_5093ac927fdfbc::t_fd39e8e46924ba 24
+  s_5093ac927fdfbc::t_d9804f370fd463 42,56,73-74
+  s_5093ac927fdfbc::t_c493f23d155430 38,41,53-54,71-72,97-100
+Classes/FamVapWrapper/FamVapWrapView.h
+  s_5093ac927fdfbc::t_b900cca26afa1c 26-30
+Classes/QGVAPlayer/Views/OpenGL/QGHWDMP4OpenGLView.m
+  s_5093ac927fdfbc::t_58aa23bf60e47c 168-170,188,190,259-262,267-268,288,318,581,589,671,673
+  s_5093ac927fdfbc::t_c5d3e9f30e6f2b 174,324-332,335,343-345,364,596-597
+  s_5093ac927fdfbc::t_b23060d3cefe72 191,275,284,313,595
+Classes/QGVAPlayer/UIView+VAP.h
+  s_5093ac927fdfbc::t_b900cca26afa1c 59-60
+Classes/QGVAPlayer/Renderers/QGVAPFrameRenderer.m
+  s_5093ac927fdfbc::t_ec5a0fbcccef86 29
+  s_5093ac927fdfbc::t_696bf8cb415bcd 26-28,31,35,39,42-43,45,47,49
+Classes/QGVAPlayer/Views/Metal/Vapx/QGVAPMetalView.m
+  s_5093ac927fdfbc::t_e8be99107255f0 29-33
+  s_5093ac927fdfbc::t_883e13b2b8f859 132,135,137
+  s_5093ac927fdfbc::t_c34ca4e4a5be6d 25-28,34-36
+Classes/QGVAPlayer/Renderers/QGVAPHWDMetalFrameRenderer.m
+  s_5093ac927fdfbc::t_129643c6d16ebe 38,41,53-54,72-73,94-95
+  s_5093ac927fdfbc::t_152b0fd1d09a82 18,42,55,70-71
+  s_5093ac927fdfbc::t_4db34978990582 21-22,24
+  s_5093ac927fdfbc::t_cff25d37c5f051 48,51-52,69,74-77
+Classes/QGVAPlayer/Views/Metal/QGHWDMetalView.m
+  s_5093ac927fdfbc::t_7a9daf7f2ca389 20-21,24,26-28
+  s_5093ac927fdfbc::t_2df1a4d399ed33 22-23,25
+  s_5093ac927fdfbc::t_14bdf18c9904ff 123,126,128
+Classes/QGVAPlayer/UIView+VAP.m
+  s_5093ac927fdfbc::t_fca3368ea80a80 245-254,257-258,267,272
+  s_5093ac927fdfbc::t_6a61e5839f4994 95,100-101
+  s_5093ac927fdfbc::t_a47b183593834d 430
+  s_5093ac927fdfbc::t_0d29949e95c3f6 75
+  s_5093ac927fdfbc::t_60265c70ebe9e5 96-99
+  s_5093ac927fdfbc::t_81c4235918b4e2 857
+  s_5093ac927fdfbc::t_b7f4c83272ef4c 667-679,683,689
+  s_5093ac927fdfbc::t_16b33d8d56d2e8 682
+  s_5093ac927fdfbc::t_56d808f05b66e3 651-652
+  s_5093ac927fdfbc::t_b900cca26afa1c 317-324
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "2967e4f521b1db5fbe107d4e8205131612dbeb14",
+  "prompts": {},
+  "logical_commit_id": "2967e4f521b1db5fbe107d4e8205131612dbeb14",
+  "sessions": {
+    "s_5093ac927fdfbc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e8812-0e66-7fd3-8f72-ce7ba8fb4f25",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+Classes/QGVAPlayer/UIView+VAP.m
+  s_3e3c7d0ca0492f::t_8d816da134325c 273
+Classes/QGVAPlayer/Views/OpenGL/QGHWDMP4OpenGLView.h
+  s_3e3c7d0ca0492f::t_213fc906beee01 21-22,34
+Classes/QGVAPlayer/Views/OpenGL/QGHWDMP4OpenGLView.m
+  s_3e3c7d0ca0492f::t_393abd8908836e 317-318
+  s_3e3c7d0ca0492f::t_8d3e5323380fe0 931-938
+  s_3e3c7d0ca0492f::t_d53168a08db932 21
+  h_0dcab3a63f5195 263-270,316,319-321
+  s_3e3c7d0ca0492f::t_8e638f2d8fa19b 410-416,427
+  s_3e3c7d0ca0492f::t_501d5cdba4b819 408-409,417-426,428-431,435-525,527,530-581
+  s_3e3c7d0ca0492f::t_3d4d7c89a98ee1 432-434
+  s_3e3c7d0ca0492f::t_527c012b17625e 23,156-158,163-164,175-177
+  s_3e3c7d0ca0492f::t_7d806e51bf24e5 613
+  s_3e3c7d0ca0492f::t_950e2d61a23a7a 683-697,699-709,714-718,734-738
+Classes/QGVAPlayer/Renderers/QGVAPOpenGLFrameRenderer.m
+  s_3e3c7d0ca0492f::t_0bf806c6fb3955 44,51
+Classes/QGVAPlayer/Renderers/QGVAPFrameRenderer.m
+  s_3e3c7d0ca0492f::t_15b1df65172941 29,56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "ab36656f3ff4bb1e2fa9a708113fc3424cf57dd1",
+  "prompts": {},
+  "logical_commit_id": "ab36656f3ff4bb1e2fa9a708113fc3424cf57dd1",
+  "humans": {
+    "h_0dcab3a63f5195": {
+      "author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  },
+  "sessions": {
+    "s_3e3c7d0ca0492f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e87d6-8cf9-7b40-860f-2ef336f8b52b",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}

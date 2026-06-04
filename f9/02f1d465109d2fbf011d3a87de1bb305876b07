@@ -1,0 +1,29 @@
+Example/QGVAPDemo/QGVAPDemo/VAP/FamVapTestController.m
+  h_0dcab3a63f5195 82-83,364,367
+  s_0c70edf36123f4::t_741719fa9880b4 455
+Classes/QGVAPlayer/QGVAPWrapView.m
+  s_0c70edf36123f4::t_60397dd0d62ed5 56,153,181-185,192
+  s_0c70edf36123f4::t_f4ab224dd69f43 27-28,149-152,154-155,177,186,193-200,214,224-225,229-231
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "f902f1d465109d2fbf011d3a87de1bb305876b07",
+  "prompts": {},
+  "logical_commit_id": "f902f1d465109d2fbf011d3a87de1bb305876b07",
+  "humans": {
+    "h_0dcab3a63f5195": {
+      "author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  },
+  "sessions": {
+    "s_0c70edf36123f4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e88fd-548d-7df2-b2dd-45819fd548f5",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}

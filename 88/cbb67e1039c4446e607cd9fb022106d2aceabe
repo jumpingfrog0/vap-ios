@@ -1,0 +1,47 @@
+Classes/QGVAPlayer/Renderers/QGVAPFrameRenderer.m
+  s_746bf2fd5c0ce7::t_e433aa604e83c3 1-67
+QGVAPlayer.podspec
+  s_746bf2fd5c0ce7::t_cb17ba82907b30 13-21,25-26
+  s_746bf2fd5c0ce7::t_aaeba6338d837d 22-24
+Classes/QGVAPlayer/Renderers/QGVAPFrameRenderer.h
+  s_746bf2fd5c0ce7::t_e433aa604e83c3 1-56
+Classes/QGVAPlayer/UIView+VAP.m
+  s_746bf2fd5c0ce7::t_c365755675a8c6 782
+  s_746bf2fd5c0ce7::t_901052f2f0d2ae 284-290,292,294,296
+  s_746bf2fd5c0ce7::t_5e3432adc1cf0a 246-250,253-260,262-267,269-283,291,293,295
+  s_746bf2fd5c0ce7::t_581b0115bbd399 595,611
+  s_746bf2fd5c0ce7::t_1abd2cec18860d 452,475
+  s_746bf2fd5c0ce7::t_8818c94b227743 494,542-546
+  s_746bf2fd5c0ce7::t_f0d6e8f5e0d9e8 74
+  s_746bf2fd5c0ce7::t_924b54079c3ba0 102
+  s_746bf2fd5c0ce7::t_72f3f8066ed025 178,180-181,185,189-192,194
+  s_746bf2fd5c0ce7::t_1c17d8404e8ee5 36
+Classes/QGVAPlayer/Renderers/QGVAPVAPMetalFrameRenderer.m
+  s_746bf2fd5c0ce7::t_e433aa604e83c3 1-83
+Classes/QGVAPlayer/Renderers/QGVAPOpenGLFrameRenderer.m
+  s_746bf2fd5c0ce7::t_e433aa604e83c3 1-86
+Classes/QGVAPlayer/Views/OpenGL/QGHWDMP4OpenGLView.m
+  s_746bf2fd5c0ce7::t_c6eace938c34e8 368-380
+  s_746bf2fd5c0ce7::t_4860f943d3170a 28,55-60,62-64,125,132,140-141,157,167,224-225,280,418,489,622
+Classes/QGVAPlayer/Renderers/QGVAPHWDMetalFrameRenderer.m
+  s_746bf2fd5c0ce7::t_e433aa604e83c3 1-81
+Classes/QGVAPlayer/Views/Metal/QGHWDMetalRenderer.m
+  s_746bf2fd5c0ce7::t_ad147a4285f6ee 274
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "88cbb67e1039c4446e607cd9fb022106d2aceabe",
+  "prompts": {},
+  "logical_commit_id": "88cbb67e1039c4446e607cd9fb022106d2aceabe",
+  "sessions": {
+    "s_746bf2fd5c0ce7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e877c-f90f-7121-b346-4c6d88430ef5",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}

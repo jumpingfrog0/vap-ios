@@ -1,0 +1,43 @@
+Classes/QGVAPlayer/Views/Metal/Vapx/QGVAPMetalView.m
+  h_0dcab3a63f5195 36,65,72,77,102,117-132
+Classes/QGVAPlayer/Controllers/QGVAPConfigManager.m
+  h_0dcab3a63f5195 25-33,90,92-96,98-105,109-111,115-119,124
+  s_1d33571492de46::t_a95ebfb420f136 97,106-107,112-114,120-123
+Example/QGVAPDemo/QGVAPDemo/Info.plist
+  h_0dcab3a63f5195 29
+Classes/QGVAPlayer/UIView+VAP.m
+  h_0dcab3a63f5195 42,44-56,74-75,134,142-146,332-333,344,361,363-376,379-382,387-434,462-466,468,531-536,588-593,599-604,630-634,637-648,650-653,719-720
+  s_1d33571492de46::t_b18449cbc41841 377-378,383-385
+  s_1d33571492de46::t_5e73485b4e2695 635,649
+Classes/QGVAPlayer/Views/Metal/Vapx/QGVAPMetalRenderer.m
+  h_0dcab3a63f5195 66,68
+Classes/QGVAPlayer/Views/Metal/QGHWDMetalView.m
+  h_0dcab3a63f5195 40,67,72,93,99,118-133
+Example/QGVAPDemo/QGVAPDemo/VAP/FamVapTestController.m
+  s_1d33571492de46::t_898b17c57ebebb 604
+  h_0dcab3a63f5195 597-599,603,605-608
+Classes/QGVAPlayer/Views/Metal/QGHWDMetalRenderer.m
+  h_0dcab3a63f5195 226,228
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "1828cf407106dec523314625b65be0d8a24268db",
+  "prompts": {},
+  "logical_commit_id": "1828cf407106dec523314625b65be0d8a24268db",
+  "humans": {
+    "h_0dcab3a63f5195": {
+      "author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  },
+  "sessions": {
+    "s_1d33571492de46": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e866c-9896-7130-bf85-109acbcd7538",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}

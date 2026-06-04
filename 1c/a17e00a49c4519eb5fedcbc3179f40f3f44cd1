@@ -1,0 +1,28 @@
+Classes/QGVAPlayer/Controllers/Decoders/QGMP4FrameHWDecoder.m
+  s_f369c8c39eed27::t_e20184b33cedf3 453-471
+Example/QGVAPDemo/QGVAPDemo/VAP/FamVapTestController.m
+  h_0dcab3a63f5195 94-96,338-341
+  s_f369c8c39eed27::t_8e1ae0f0884d03 581-582
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "1ca17e00a49c4519eb5fedcbc3179f40f3f44cd1",
+  "prompts": {},
+  "logical_commit_id": "1ca17e00a49c4519eb5fedcbc3179f40f3f44cd1",
+  "humans": {
+    "h_0dcab3a63f5195": {
+      "author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  },
+  "sessions": {
+    "s_f369c8c39eed27": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e7d99-9001-7873-a16d-51e3cf511dde",
+        "model": "gpt-5.5"
+      },
+      "human_author": "huangdonghong3 <huangdonghong@bigo.sg>"
+    }
+  }
+}
